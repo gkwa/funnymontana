@@ -46,20 +46,23 @@ just clean
 
 ## Cheatsheet
 
-- Install: `just install`
-- List rules: `just`
-- Fetch URL: `just fetch URL`
-- Convert HTML to Markdown: `just html-to-md`
-- Copy to clipboard: `just copy-to-clipboard URL`
-- Run full pipeline: `just pipeline URL`
-- Clean tmp directory: `just clean`
-- Format code: `just format`
-- Run TypeScript compiler: `just tsc`
-- Lint code: `just lint`
-- Run all checks: `just check`
+```bash
+just install          # Install project dependencies
+just                  # List available rules
+just fetch URL        # Fetch content from URL
+just html-to-md       # Convert HTML to Markdown
+just copy-to-clipboard URL  # Copy processed content to clipboard
+just pipeline URL     # Run full pipeline (fetch, convert, copy)
+just clean            # Clean tmp directory
+just format           # Format code
+just tsc              # Run TypeScript compiler
+just lint             # Lint code
+just check            # Run all checks (format, tsc, lint)
+```
 
 ## Dependencies
 
 - [just](https://github.com/casey/just?tab=readme-ov-file#just): Command runner for project-specific tasks
 - [pandoc](https://github.com/jgm/pandoc?tab=readme-ov-file#pandoc): Universal document converter
 - [Obsidian](https://obsidian.md/download): Note-taking app
+```
