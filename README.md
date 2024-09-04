@@ -10,7 +10,7 @@ just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-s
 ```
 
 1. Downloads the page
-2. Converts it to markdown using pandoc, which significantly reduces the content size
+1. Reduce the html file size in any way possible so that we can feed it back into Claude.ai without getting rate limited.   It seems converting the file to markdown using pandoc helps.
 3. Adds prompt instructions to convert relative links to absolute so links render (in Obsidian)
 4. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
 5. Copies the result to the clipboard
