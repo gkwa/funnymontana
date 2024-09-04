@@ -15,7 +15,8 @@ just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-s
 4. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
 5. Copies the result to the clipboard
 
-You can then paste that back into the Claude.ai prompt. This makes it much easier to feed content into Claude.ai for analysis and discussion.
+
+I then paste that back into the Claude.ai prompt. This makes it much easier to feed content into Claude.ai for analysis and discussion.
 
 ## Installation
 
