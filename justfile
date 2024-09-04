@@ -5,7 +5,7 @@ set shell := ["bash", "-uc"]
 # Define clipboard content template
 
 instructions_start := "<instructions>"
-instructions_body := """
+instructions_body := '''
 Convert the html to markdown.
 
 Please make a few transformations along the way:
@@ -17,17 +17,11 @@ of the page using standard markdown format [title](url).
 sentence is a new paragraph.  This helps comprehension.
 
 1. When formatting code blocks please label the code block with the
-label of the language for example:
-
-``` go
-package main
-
-func main() {}
-```
+name of the language.
 
 Please make sure all relative links are converted to absolute links. 
 You can do this because I've provided the original url here:
-"""
+'''
 instructions_end := "</instructions>"
 
 # List all available commands
@@ -77,6 +71,7 @@ copy-to-clipboard URL:
     #!/usr/bin/env bash
     TIMESTAMP=$(cat tmp/latest_timestamp)
     MARKDOWN_FILE="tmp/${TIMESTAMP}_processed.md"
+    TMP_FILE="tmp/${TIMESTAMP}_tmp"
     if [ ! -f "$MARKDOWN_FILE" ]; then
         echo "Error: Markdown file $MARKDOWN_FILE not found"
         exit 1
@@ -89,7 +84,9 @@ copy-to-clipboard URL:
         echo 
         echo
         cat "$MARKDOWN_FILE"
-    } | pbcopy
+    } >$TMP_FILE
+    echo debug: $TMP_FILE
+    cat $TMP_FILE | pbcopy
     echo "Markdown content with preamble copied to clipboard."
 
 # Run the complete pipeline
