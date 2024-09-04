@@ -60,6 +60,6 @@ just clean
 
 ## Dependencies
 
-- [just](https://github.com/casey/just): Command runner for project-specific tasks
-- [pandoc](https://github.com/jgm/pandoc): Universal document converter
-- [Obsidian](https://obsidian.md): Note-taking app
+- [just](https://github.com/casey/just?tab=readme-ov-file#just): Command runner for project-specific tasks
+- [pandoc](https://github.com/jgm/pandoc?tab=readme-ov-file#pandoc): Universal document converter
+- [Obsidian](https://obsidian.md/download): Note-taking app
