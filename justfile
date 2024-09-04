@@ -48,7 +48,7 @@ copy-to-clipboard URL:
         echo "Error: Markdown file $MARKDOWN_FILE not found"
         exit 1
     fi
-    node -e "require('./template').generateTemplate('{{ URL }}', '$MARKDOWN_FILE', '$TMP_FILE')"
+    pnpm exec ts-node -e "import { generateTemplate } from './utils'; generateTemplate('{{ URL }}', '$MARKDOWN_FILE', '$TMP_FILE')"
     cat $TMP_FILE | pbcopy
     echo "Markdown content with preamble copied to clipboard."
 
