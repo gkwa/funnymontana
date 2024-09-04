@@ -20,6 +20,8 @@ I then paste that back into the Claude.ai prompt. This makes it much easier to f
 
 ## Installation
 
+install pandoc
+
 ```bash
 eval "$(just --completions bash 2>/dev/null)"
 just # show rules
