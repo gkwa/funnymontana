@@ -8,7 +8,15 @@ Running:
 ```
 just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-services-93a52233c8a9
 ```
-downloads the page, converts it to markdown using pandoc, which significantly reduces the content size. This makes it much easier to feed into Claude.ai for analysis and discussion.
+
+
+1. downloads the page
+1. converts it to markdown using pandoc, which significantly reduces the content size
+1. copies result to my clipboard
+
+I then paste that back into claude.ai prompt.
+
+This makes it much easier to feed into Claude.ai for analysis and discussion.
 
 ## Installation
 
