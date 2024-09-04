@@ -11,7 +11,8 @@ Convert the html to markdown.
 Please make a few transformations along the way:
 
 1. Put the title of the page on a separate line at the top 
-of the file.
+of the file.  Please don't add this title as a header.  Instead
+just add it without formatting on a line all by itself.
 
 1. Put a markdown link to the original article at the top
 of the page using standard markdown format [title](url). 
