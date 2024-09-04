@@ -97,6 +97,11 @@ just add it without formatting on a line all by itself.
 1. Put a markdown link to the original article at the top
 of the page using standard markdown format [title](url). 
 
+1. When you respond with your results, please don't say things like this
+"Here is the converted markdown..." since I already know that you're giving 
+markdown because thats the question I asked originally. When you do say that then
+I have to go edit the markdown to delete it.
+
 1. In the process of converting, change formatting such that each
 sentence is a new paragraph.  This helps comprehension.
 
