@@ -9,14 +9,13 @@ Running:
 just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-services-93a52233c8a9
 ```
 
+1. Downloads the page
+2. Converts it to markdown using pandoc, which significantly reduces the content size
+3. Adds prompt instructions to convert relative links to absolute so links render (in Obsidian)
+4. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
+5. Copies the result to your clipboard
 
-1. downloads the page
-1. converts it to markdown using pandoc, which significantly reduces the content size
-1. copies result to my clipboard
-
-I then paste that back into claude.ai prompt.
-
-This makes it much easier to feed into Claude.ai for analysis and discussion.
+You can then paste that back into the Claude.ai prompt. This makes it much easier to feed content into Claude.ai for analysis and discussion.
 
 ## Installation
 
@@ -63,3 +62,4 @@ just clean
 
 - [just](https://github.com/casey/just): Command runner for project-specific tasks
 - [pandoc](https://github.com/jgm/pandoc): Universal document converter
+- [Obsidian](https://obsidian.md): Note-taking app
