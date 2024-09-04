@@ -13,7 +13,7 @@ just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-s
 2. Converts it to markdown using pandoc, which significantly reduces the content size
 3. Adds prompt instructions to convert relative links to absolute so links render (in Obsidian)
 4. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
-5. Copies the result to your clipboard
+5. Copies the result to the clipboard
 
 You can then paste that back into the Claude.ai prompt. This makes it much easier to feed content into Claude.ai for analysis and discussion.
 
