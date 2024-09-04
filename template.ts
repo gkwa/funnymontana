@@ -19,6 +19,11 @@ sentence is a new paragraph.  This helps comprehension.
 1. When formatting code blocks please label the code block with the
 name of the language.
 
+1. When you respond with your results, please don't say things like this
+"Here is the converted markdown..." since I already know that you're giving 
+markdown because thats the question I asked originally. When you do say that then
+I have to go edit the markdown to delete it.
+
 1. Make sure to keep all links to external images or to github gists 
 or code blocks.
 
