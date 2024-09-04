@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 
 const scratchDir = path.join("tmp");
 
@@ -13,8 +14,18 @@ export function parseUrl(url: string): { baseUrl: string; path: string } {
 }
 
 export async function fetchArticle(page: any, url: string): Promise<string> {
+  const md5sum = crypto.createHash("md5").update(url).digest("hex");
+  const cachedFilePath = path.join(scratchDir, `${md5sum}-original.html`);
+
+  if (fs.existsSync(cachedFilePath)) {
+    return fs.readFileSync(cachedFilePath, "utf-8");
+  }
+
   await page.goto(url, { timeout: 120000, waitUntil: "domcontentloaded" });
-  return await page.content();
+  const content = await page.content();
+
+  fs.writeFileSync(cachedFilePath, content);
+  return content;
 }
 
 export async function processContent(
@@ -22,7 +33,12 @@ export async function processContent(
   baseUrl: string,
   articlePath: string,
 ): Promise<{ originalPath: string; processedPath: string }> {
-  const originalPath = saveFile(content, articlePath, "-original");
+  const md5sum = crypto
+    .createHash("md5")
+    .update(baseUrl + articlePath)
+    .digest("hex");
+  const originalPath = path.join(scratchDir, `${md5sum}-original.html`);
+  const processedPath = path.join(scratchDir, `${md5sum}-processed.html`);
 
   const $ = cheerio.load(content);
 
@@ -47,7 +63,7 @@ export async function processContent(
   });
 
   const processedContent = $.html();
-  const processedPath = saveFile(processedContent, articlePath, "-processed");
+  fs.writeFileSync(processedPath, processedContent);
 
   return { originalPath, processedPath };
 }
@@ -66,23 +82,6 @@ export function verifyAbsoluteUrls(filePath: string): void {
       throw new Error(`Invalid absolute URL found: ${match}`);
     }
   });
-}
-
-function saveFile(
-  content: string,
-  articlePath: string,
-  suffix: string,
-): string {
-  if (!fs.existsSync(scratchDir)) {
-    fs.mkdirSync(scratchDir, { recursive: true });
-  }
-
-  const parsedPath = path.parse(articlePath);
-  let fileName = parsedPath.name + suffix + (parsedPath.ext || ".html");
-  const filePath = path.join(scratchDir, fileName);
-  fs.writeFileSync(filePath, content);
-
-  return filePath;
 }
 
 const instructionsStart = "<instructions>";
@@ -117,8 +116,6 @@ You should include them into the result like this:
 You can do this because I've provided the original url here:
 `;
 const instructionsEnd = "</instructions>";
-
-
 
 export function generateTemplate(
   url: string,
