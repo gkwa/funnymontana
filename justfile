@@ -10,7 +10,10 @@ Convert the html to markdown.
 
 Please make a few transformations along the way:
 
-1. Please put a markdonw link to the original article at the top
+1. Put the title of the page on a separate line at the top 
+of the file.
+
+1. Put a markdown link to the original article at the top
 of the page using standard markdown format [title](url). 
 
 1. In the process of converting, change formatting such that each
