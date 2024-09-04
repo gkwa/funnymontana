@@ -39,13 +39,11 @@ export function generateTemplate(
   outputFile: string,
 ): void {
   const markdownContent = fs.readFileSync(markdownFile, "utf-8");
-  const template = `
-${instructionsStart}
+  const template = `${instructionsStart}
 ${instructionsBody}
 ${url}
 ${instructionsEnd}
 
-${markdownContent}
-`;
+${markdownContent}`;
   fs.writeFileSync(outputFile, template);
 }

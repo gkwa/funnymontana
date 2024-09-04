@@ -13,7 +13,7 @@ export function parseUrl(url: string): { baseUrl: string; path: string } {
 }
 
 export async function fetchArticle(page: any, url: string): Promise<string> {
-  await page.goto(url, { timeout: 60000, waitUntil: "domcontentloaded" });
+  await page.goto(url, { timeout: 120000, waitUntil: "domcontentloaded" });
   return await page.content();
 }
 

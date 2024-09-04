@@ -5,6 +5,8 @@ default:
 
 install:
     pnpm install
+    pnpm exec playwright install-deps
+    pnpm exec playwright install
 
 fetch URL:
     mkdir -p tmp
