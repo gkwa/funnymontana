@@ -5,16 +5,16 @@
 Often I'll read a web page and want to copy it to my notes, annotate, and ask questions to Claude.ai regarding the content. This tool simplifies that process.
 
 Running:
+
 ```
 just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-services-93a52233c8a9
 ```
 
 1. Downloads the page
-1. Reduce the html file size in any way possible so that we can feed it back into Claude.ai without getting rate limited.   It seems converting the file to markdown using pandoc helps.
-3. Adds prompt instructions to convert relative links to absolute so links render (in Obsidian)
-4. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
-5. Copies the result to the clipboard
-
+1. Reduce the html file size in any way possible so that we can feed it back into Claude.ai without getting rate limited. It seems converting the file to markdown using pandoc helps.
+1. Adds prompt instructions to convert relative links to absolute so links render (in Obsidian)
+1. Adds prompt instructions to convert each sentence to a new paragraph for easier readability
+1. Copies the result to the clipboard
 
 I then paste that back into the Claude.ai prompt. This makes it much easier to feed content into Claude.ai for analysis and discussion.
 
@@ -29,11 +29,13 @@ just install
 ## Usage
 
 Example: run the pipeline:
+
 ```bash
 just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-services-93a52233c8a9
 ```
 
 Or run steps individually:
+
 ```bash
 just fetch URL
 just html-to-md
@@ -41,6 +43,7 @@ just copy-to-clipboard URL
 ```
 
 Clean up:
+
 ```bash
 just clean
 ```
@@ -66,4 +69,4 @@ just check            # Run all checks (format, tsc, lint)
 - [just](https://github.com/casey/just?tab=readme-ov-file#just): Command runner for project-specific tasks
 - [pandoc](https://github.com/jgm/pandoc?tab=readme-ov-file#pandoc): Universal document converter
 - [Obsidian](https://obsidian.md/download): Note-taking app
-```
+- [pnpm](https://pnpm.io)
