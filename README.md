@@ -1,9 +1,14 @@
-
-
 # funnymontana
 
+## Motivation
 
+Often I'll read a web page and want to copy it to my notes, annotate, and ask questions to Claude.ai regarding the content. This tool simplifies that process.
 
+Running:
+```
+just pipeline https://medium.com/box-tech-blog/creating-cloud-managed-platform-services-93a52233c8a9
+```
+downloads the page, converts it to markdown using pandoc, which significantly reduces the content size. This makes it much easier to feed into Claude.ai for analysis and discussion.
 
 ## Installation
 
@@ -45,3 +50,8 @@ just clean
 - Run TypeScript compiler: `just tsc`
 - Lint code: `just lint`
 - Run all checks: `just check`
+
+## Dependencies
+
+- [just](https://github.com/casey/just): Command runner for project-specific tasks
+- [pandoc](https://github.com/jgm/pandoc): Universal document converter
