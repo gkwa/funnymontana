@@ -90,21 +90,7 @@ Convert the html to markdown.
 
 Please make a few transformations along the way:
 
-1. In the process of converting, change formatting such that each
-sentence is a new paragraph.  This helps comprehension.
-
-So for example, if we see this text:
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-
-then we should transform it such that each sentence is a new paragraph like this:
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-
-Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-
-Notice how there are two pargraphs there.
-
+1. Each sentence should be converted to a new paragraph.
 
 1. Put the title of the page on a separate line at the top 
 of the file.  Please don't add this title as a header.  Instead
