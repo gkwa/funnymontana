@@ -90,6 +90,22 @@ Convert the html to markdown.
 
 Please make a few transformations along the way:
 
+1. In the process of converting, change formatting such that each
+sentence is a new paragraph.  This helps comprehension.
+
+So for example, if we see this text:
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+
+then we should transform it such that each sentence is a new paragraph like this:
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+
+
+
+
 1. Put the title of the page on a separate line at the top 
 of the file.  Please don't add this title as a header.  Instead
 just add it without formatting on a line all by itself.
@@ -102,8 +118,6 @@ of the page using standard markdown format [title](url).
 markdown because thats the question I asked originally. When you do say that then
 I have to go edit the markdown to delete it.
 
-1. In the process of converting, change formatting such that each
-sentence is a new paragraph.  This helps comprehension.
 
 1. When formatting code blocks please label the code block with the
 name of the language.
