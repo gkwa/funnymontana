@@ -62,6 +62,16 @@ pipeline URL:
     echo "  Processed MD:    tmp/${TIMESTAMP}_processed.md ($(du -h tmp/${TIMESTAMP}_processed.md | cut -f1))"
     @echo "Markdown content with preamble has been copied to clipboard."
 
+pipeline-visible URL:
+    just fetch-visible {{ URL }}
+    just html-to-md
+    just copy-to-clipboard {{ URL }}
+    @echo "Pipeline completed. Output files:"
+    @TIMESTAMP=$(cat tmp/latest_timestamp) && \
+    echo "  Fetched HTML:    tmp/${TIMESTAMP}_fetched.html ($(du -h tmp/${TIMESTAMP}_fetched.html | cut -f1))" && \
+    echo "  Processed MD:    tmp/${TIMESTAMP}_processed.md ($(du -h tmp/${TIMESTAMP}_processed.md | cut -f1))"
+    @echo "Markdown content with preamble has been copied to clipboard."
+
 clean:
     rm -rf tmp
 
