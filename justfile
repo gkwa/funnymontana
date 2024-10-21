@@ -76,7 +76,7 @@ clean:
     rm -rf tmp
 
 format:
-    npx prettier --write .
+    npx prettier --write '*.ts'
     just --unstable --fmt
 
 tsc:
