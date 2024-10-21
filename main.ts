@@ -14,9 +14,16 @@ async function main() {
   const page = await context.newPage()
 
   try {
+    console.log(`Fetching URL: ${url}`)
     const { baseUrl, path: articlePath } = parseUrl(url)
+    console.log(`Base URL: ${baseUrl}, Article Path: ${articlePath}`)
+
     const content = await fetchArticle(page, url)
+    console.log(`Content fetched, length: ${content.length} characters`)
+
     const { originalPath, processedPath } = await processContent(content, baseUrl, articlePath)
+    console.log(`Content processed`)
+
     verifyAbsoluteUrls(processedPath)
     console.log(`Original content saved to: ${originalPath}`)
     console.log(`Processed content saved to: ${processedPath}`)
