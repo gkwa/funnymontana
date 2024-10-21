@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test"
 
 const config = defineConfig({
   use: {
@@ -13,6 +13,6 @@ const config = defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-});
+})
 
-export default config;
+export default config
