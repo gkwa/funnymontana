@@ -75,7 +75,7 @@ pipeline-visible URL:
 clean:
     rm -rf tmp
 
-format:
+fmt:
     npx prettier --write '*.ts'
     just --unstable --fmt
 
@@ -85,4 +85,4 @@ tsc:
 lint:
     npx eslint .
 
-check: format tsc lint
+check: fmt tsc lint
