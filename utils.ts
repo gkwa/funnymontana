@@ -21,7 +21,8 @@ export async function fetchArticle(page: any, url: string): Promise<string> {
     return fs.readFileSync(cachedFilePath, "utf-8")
   }
 
-  await page.goto(url, { timeout: 120000, waitUntil: "domcontentloaded" })
+  await page.goto(url, { timeout: 120000, waitUntil: "networkidle" })
+  await page.waitForTimeout(1000) // Wait for dynamic content to load
   const content = await page.content()
 
   fs.writeFileSync(cachedFilePath, content)
