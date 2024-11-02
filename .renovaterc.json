@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", ":dependencyDashboard"],
+  "extends": ["config:best-practices", ":dependencyDashboard", ":pinAllDependencies"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "packageRules": [
