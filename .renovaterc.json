@@ -6,6 +6,7 @@
   "packageRules": [
     {
       "automerge": true,
+      "automergeType": "branch",
       "automergeStrategy": "merge-commit",
       "matchDepTypes": ["*"]
     }
