@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       cheerio:
-        specifier: ^1.0.0-rc.12
+        specifier: 1.0.0
         version: 1.0.0
       playwright:
-        specifier: ^1.47.0
+        specifier: 1.48.2
         version: 1.48.2
     devDependencies:
       '@playwright/test':
