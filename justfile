@@ -1,4 +1,4 @@
-set shell := ["bash", "-uc"]
+set shell := ["bash", "-uec"]
 
 default:
     @just --list
@@ -9,17 +9,21 @@ install:
     pnpm exec playwright install
 
 fetch URL:
+    #!/usr/bin/env bash
+    set -euo pipefail
     mkdir -p tmp
-    TIMESTAMP=$(date +%Y%m%d_%H%M%S) && \
-    pnpm start {{ URL }} && \
-    mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html && \
+    TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+    pnpm start {{ URL }}
+    mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html
     echo ${TIMESTAMP} > tmp/latest_timestamp
 
 fetch-visible URL:
+    #!/usr/bin/env bash
+    set -euo pipefail
     mkdir -p tmp
-    TIMESTAMP=$(date +%Y%m%d_%H%M%S) && \
-    HEADLESS=false pnpm start {{ URL }} && \
-    mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html && \
+    TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+    HEADLESS=false pnpm start {{ URL }}
+    mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html
     echo ${TIMESTAMP} > tmp/latest_timestamp
 
 html-to-md:
@@ -52,20 +56,14 @@ copy-to-clipboard URL:
     cat $TMP_FILE | pbcopy
     echo "Markdown content with preamble copied to clipboard."
 
-pipeline URL:
-    just fetch {{ URL }}
-    just html-to-md
-    just copy-to-clipboard {{ URL }}
+pipeline URL: (fetch URL) html-to-md (copy-to-clipboard URL)
     @echo "Pipeline completed. Output files:"
     @TIMESTAMP=$(cat tmp/latest_timestamp) && \
     echo "  Fetched HTML:    tmp/${TIMESTAMP}_fetched.html ($(du -h tmp/${TIMESTAMP}_fetched.html | cut -f1))" && \
     echo "  Processed MD:    tmp/${TIMESTAMP}_processed.md ($(du -h tmp/${TIMESTAMP}_processed.md | cut -f1))"
     @echo "Markdown content with preamble has been copied to clipboard."
 
-pipeline-visible URL:
-    just fetch-visible {{ URL }}
-    just html-to-md
-    just copy-to-clipboard {{ URL }}
+pipeline-visible URL: (fetch-visible URL) html-to-md (copy-to-clipboard URL)
     @echo "Pipeline completed. Output files:"
     @TIMESTAMP=$(cat tmp/latest_timestamp) && \
     echo "  Fetched HTML:    tmp/${TIMESTAMP}_fetched.html ($(du -h tmp/${TIMESTAMP}_fetched.html | cut -f1))" && \
