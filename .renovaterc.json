@@ -5,6 +5,7 @@
   "prConcurrentLimit": 0,
   "packageRules": [
     {
+      "pinVersions": true,
       "automerge": true,
       "ignoreTests": true,
       "automergeType": "branch",
