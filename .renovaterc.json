@@ -7,8 +7,7 @@
     {
       "rangeStrategy": "pin",
       "automerge": true,
-      "ignoreTests": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "automergeStrategy": "merge-commit",
       "matchDepTypes": ["*"]
     }
