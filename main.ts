@@ -1,4 +1,3 @@
--- main.ts --
 import { parseUrl, fetchArticle, processContent, verifyAbsoluteUrls } from "./src"
 import { chromium } from "playwright"
 import config from "./playwright.config"
