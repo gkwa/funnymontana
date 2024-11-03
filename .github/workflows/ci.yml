@@ -18,9 +18,12 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 8
-    - run: pnpm install
-    - run: pnpm exec playwright install --with-deps
-    - run: pnpm exec playwright test --reporter=list
+    - name: pnpm install
+      run: pnpm install
+    - name: playwright install
+      run: pnpm exec playwright install --with-deps
+    - name: Test
+      run: pnpm exec playwright test --reporter=list
     - if: always()
       uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
       with:
