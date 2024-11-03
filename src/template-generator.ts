@@ -15,4 +15,3 @@ ${instructionsEnd}
 ${markdownContent}`
   writeFile(outputFile, template)
 }
-

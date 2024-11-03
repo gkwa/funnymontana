@@ -13,7 +13,7 @@ fetch URL:
     set -euo pipefail
     mkdir -p tmp
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-    pnpm start {{ URL }}
+    NODE_PATH=. pnpm start {{ URL }}
     mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html
     echo ${TIMESTAMP} > tmp/latest_timestamp
 
@@ -22,7 +22,7 @@ fetch-visible URL:
     set -euo pipefail
     mkdir -p tmp
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-    HEADLESS=false pnpm start {{ URL }}
+    HEADLESS=false NODE_PATH=. pnpm start {{ URL }}
     mv tmp/*-processed.html tmp/${TIMESTAMP}_fetched.html
     echo ${TIMESTAMP} > tmp/latest_timestamp
 
@@ -52,7 +52,7 @@ copy-to-clipboard URL:
         echo "Error: Markdown file $MARKDOWN_FILE not found"
         exit 1
     fi
-    pnpm exec ts-node -e "import { generateTemplate } from './utils'; generateTemplate('{{ URL }}', '$MARKDOWN_FILE', '$TMP_FILE')"
+    NODE_PATH=. pnpm exec ts-node -e "import { generateTemplate } from './src'; generateTemplate('{{ URL }}', '$MARKDOWN_FILE', '$TMP_FILE')"
     cat $TMP_FILE | pbcopy
     echo "Markdown content with preamble copied to clipboard."
 
@@ -74,6 +74,7 @@ clean:
     rm -rf tmp
 
 fmt:
+    npx prettier --write 'src/**/*.ts'
     npx prettier --write '*.ts'
     just --unstable --fmt
 

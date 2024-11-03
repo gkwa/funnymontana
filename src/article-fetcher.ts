@@ -1,4 +1,4 @@
-import type { Page } from 'playwright'
+import type { Page } from "playwright"
 import path from "path"
 import { scratchDir, generateMd5, readCachedFile, writeFile } from "./file-utils"
 import { waitForDynamicContent } from "./page-utils"
@@ -18,4 +18,3 @@ export async function fetchArticle(page: Page, url: string): Promise<string> {
   writeFile(cachedFilePath, content)
   return content
 }
-
