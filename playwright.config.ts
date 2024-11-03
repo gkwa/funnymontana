@@ -1,6 +1,14 @@
 import { defineConfig, devices } from "@playwright/test"
+import fs from "fs"
+
+const urls = fs
+  .readFileSync("tests/urls.txt", "utf-8")
+  .split("\n")
+  .filter(Boolean)
+  .map((url) => url.trim())
 
 const config = defineConfig({
+  testDir: "./tests",
   use: {
     headless: process.env.HEADLESS !== "false",
     viewport: { width: 1280, height: 720 },
@@ -12,6 +20,11 @@ const config = defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
+    // Add a project for each URL for individual testing
+    ...urls.map((url) => ({
+      name: url,
+      use: { ...devices["Desktop Chrome"] },
+    })),
   ],
 })
 

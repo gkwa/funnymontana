@@ -85,3 +85,12 @@ lint:
     npx eslint .
 
 check: fmt tsc lint
+
+test:
+    npx playwright test
+
+test-url URL:
+    npx playwright test tests/single.test.ts --project="{{ URL }}"
+
+test-all:
+    npx playwright test tests/urls.test.ts
