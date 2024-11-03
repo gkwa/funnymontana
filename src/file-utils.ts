@@ -16,5 +16,6 @@ export function readCachedFile(filePath: string): string | null {
 }
 
 export function writeFile(filePath: string, content: string): void {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true })
   fs.writeFileSync(filePath, content)
 }
