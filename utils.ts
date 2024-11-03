@@ -2,8 +2,17 @@ import * as cheerio from "cheerio"
 import fs from "fs"
 import path from "path"
 import crypto from "crypto"
+import type { Page } from "playwright"
 
 const scratchDir = path.join("tmp")
+
+async function waitForDynamicContent(page: Page, targetUrl: string, timeoutMs = 5000) {
+  await page.goto(targetUrl, { waitUntil: "domcontentloaded" })
+  await Promise.race([
+    page.waitForLoadState("networkidle"),
+    new Promise((resolve) => setTimeout(resolve, timeoutMs)),
+  ])
+}
 
 export function parseUrl(url: string): { baseUrl: string; path: string } {
   const parsedUrl = new URL(url)
@@ -13,7 +22,7 @@ export function parseUrl(url: string): { baseUrl: string; path: string } {
   }
 }
 
-export async function fetchArticle(page: any, url: string): Promise<string> {
+export async function fetchArticle(page: Page, url: string): Promise<string> {
   const md5sum = crypto.createHash("md5").update(url).digest("hex")
   const cachedFilePath = path.join(scratchDir, `${md5sum}-original.html`)
 
@@ -21,8 +30,7 @@ export async function fetchArticle(page: any, url: string): Promise<string> {
     return fs.readFileSync(cachedFilePath, "utf-8")
   }
 
-  await page.goto(url, { timeout: 120000, waitUntil: "networkidle" })
-  await page.waitForTimeout(1000) // Wait for dynamic content to load
+  await waitForDynamicContent(page, url, 5000)
   const content = await page.content()
 
   fs.writeFileSync(cachedFilePath, content)
@@ -63,7 +71,6 @@ export async function processContent(
             })
             $(element).attr(attr, srcsetParts.join(", "))
           } else {
-            // Check if the value is already an absolute URL
             if (value.startsWith("http://") || value.startsWith("https://")) {
               $(element).attr(attr, value)
             } else {
@@ -72,7 +79,6 @@ export async function processContent(
           }
         } catch (error) {
           console.warn(`Skipping invalid URL: ${value} in attribute ${attr}`)
-          // Leave the original value
           $(element).attr(attr, value)
         }
       }
