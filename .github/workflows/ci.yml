@@ -20,12 +20,7 @@ jobs:
         version: 8
     - run: pnpm install
     - run: pnpm exec playwright install --with-deps
-    - name: Run Playwright tests with debug logging
-      env:
-        DEBUG: pw:api,pw:browser*,pw:protocol*
-        PWDEBUG: 1
-      run: pnpm exec playwright test --reporter=list
-    - run: pnpm exec playwright test
+    - run: pnpm exec playwright test --reporter=list
     - if: always()
       uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
       with:
