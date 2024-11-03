@@ -5,11 +5,9 @@
   "prConcurrentLimit": 0,
   "packageRules": [
     {
-      "rangeStrategy": "pin",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeStrategy": "merge-commit",
-      "matchDepTypes": ["*"]
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "replacement"],
+      "recreateWhen": "always"
     }
   ],
   "platformAutomerge": true
