@@ -31,3 +31,10 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+  required-check:
+    name: All Tests Passed
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All tests passed!"
