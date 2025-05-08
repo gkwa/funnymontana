@@ -11,7 +11,7 @@
     "playwright": "1.52.0"
   },
   "devDependencies": {
-    "@types/node": "22.15.15",
+    "@types/node": "22.15.16",
     "@playwright/test": "1.52.0",
     "ts-node": "10.9.2",
     "typescript": "5.8.3"
