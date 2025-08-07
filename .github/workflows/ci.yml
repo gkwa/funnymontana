@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@8edcb1bdb4e267140fa742c62e395cd74f332709
     - uses: actions/setup-node@5e2628c959b9ade56971c0afcebbe5332d44b398
       with:
-        node-version: "22.17.1"
+        node-version: "22.18.0"
     - name: install pnpm
       run: |
         corepack enable
