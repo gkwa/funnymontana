@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-    - uses: actions/setup-node@cd2651c46231bc0d6f48d6b34433b845331235fe
+    - uses: actions/setup-node@89d709d423dc495668cd762a18dd4a070611be3f
       with:
         node-version: "22.19.0"
     - name: install pnpm
