@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run: pnpm exec playwright test --reporter=list
     - if: always()
-      uses: actions/upload-artifact@017748b48f8610ca8e6af1222f4a618e84a9c703
+      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
       with:
         name: playwright-report
         path: playwright-report/
